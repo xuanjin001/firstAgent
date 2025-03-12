@@ -36,5 +36,5 @@ LDFLAGS="-L$(brew --prefix openssl)/lib" \
 pyenv install -v 3.5.2
 ```
 
-pyenv installing 3.9 kept not able to install correctly, it is due to mac m1, solution;
+pyenv installing 3.9 kept not able to install correctly, solution;
 `brew install python3.9` and then establish the python3.9 in `.pyenv/versions`
