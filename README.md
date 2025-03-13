@@ -13,6 +13,13 @@ Install PydanticAI
 pip install pydantic-ai
 ```
 
+Docker is also required
+
+### Architecture
+
+- PydanticAI: connect to LLM
+- Docker Build
+
 ### Error and Resolutions
 
 Following error while installing python3.13, as PydanticAI requires 3.9+ python.
@@ -21,20 +28,24 @@ BUILD FAILED (OS X 15.3.1 using python-build 20180424)
 
 To fix the above on mac:
 
-Uninstall the old tools
-`$ sudo rm -rf /Library/Developer/CommandLineTools`
+1. delete all python versions (using `brew uninstall`)
+2. Uninstall the old tools
+   `$ sudo rm -rf /Library/Developer/CommandLineTools`
+3. Reinstall Xcode Command line tools
+   `$ xcode-select --install`
+4. Install python using pyenv
+   `$ pyenv install 3.13`
 
-Reinstall Xcode Command line tools
-`$ xcode-select --install`
+After above new error: WARNING: Disabling truststore since ssl support is missing
 
-Install python using pyenv
-`$ pyenv install 3.8.5`
+4. Please also make sure `gcc` has been installed successfully
 
-```
-CFLAGS="-I$(brew --prefix openssl)/include" \
-LDFLAGS="-L$(brew --prefix openssl)/lib" \
-pyenv install -v 3.5.2
-```
+5. What ultimately resolved it is using the solution from; https://github.com/pyenv/pyenv/issues/993
 
+6. run `source .zshrc` or `exec .zshrc -l`
+
+7. close terminals & reopen to reset everything
+
+alternatively for temporary fixes:
 pyenv installing 3.9 kept not able to install correctly, solution;
 `brew install python3.9` and then establish the python3.9 in `.pyenv/versions`

@@ -1,0 +1,5 @@
+# Files
+.env
+.env.temp
+.env.test
+env_vars.json
